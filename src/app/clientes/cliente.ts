@@ -1,7 +1,11 @@
+import { Region } from "./region";
+
 export class Cliente {
     id!: number;
-    nombre!: string;
-    apellido!: string;
+    name!: string;
+    lastName!: string;
     createdAt!: string;
     email!: string;
+    img!: string;
+    region!: Region;
 }

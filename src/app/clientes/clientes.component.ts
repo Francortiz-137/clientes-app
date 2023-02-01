@@ -5,6 +5,7 @@ import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from './detalle/modal.service';
+import { AuthService } from '../usuarios/auth.service';
 
 @Component({
   selector: 'app-clientes',
@@ -17,7 +18,8 @@ export class ClientesComponent{
   paginador: any;
   clienteSeleccionado!: Cliente;
 
-  constructor(private clienteService: ClienteService, private activatedRoute : ActivatedRoute, private modalService:ModalService) {}
+  constructor(private clienteService: ClienteService, private activatedRoute : ActivatedRoute, private modalService:ModalService,
+      protected authService:AuthService) {}
 
   ngOnInit(){
     

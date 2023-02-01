@@ -7,9 +7,10 @@ import { Usuario } from './usuario';
   providedIn: 'root'
 })
 export class AuthService {
+  
   private _accessToken: String | null = null;
 
-  private _usuario!: Usuario;
+  private _usuario: Usuario | null = null;
   
   constructor(private http:HttpClient) { }
 
@@ -27,10 +28,10 @@ export class AuthService {
     if(this._accessToken != null) {
       return this._accessToken;
     }else if(this._accessToken == null && sessionStorage.getItem('token') != null) {
-      this._accessToken = JSON.parse(sessionStorage.getItem('token')!) as string;
+      this._accessToken = sessionStorage.getItem('token');
       return this._accessToken;
     }
-    return "";
+    return null;
   }
   login(usuario: Usuario):Observable<any>{
     const urlEndPoint = 'http://localhost:8080/oauth/token';
@@ -58,9 +59,9 @@ export class AuthService {
   }
 
   guardarToken(accessToken: String):void{
-    console.log(accessToken);
+    console.log("token: "+ accessToken);
     this._accessToken = accessToken;
-    sessionStorage.setItem('token', JSON.stringify(this._accessToken));
+    sessionStorage.setItem('token', this._accessToken.toString());
   }
 
   obtenerDataToken(accessToken: String|null):any
@@ -75,6 +76,22 @@ export class AuthService {
   isAuthenticated():boolean{
     let payload = this.obtenerDataToken(this.accessToken);
     if(payload!= null && payload.user_name!= null && payload.user_name.length>0){ 
+      return true;
+    }
+    return false;
+  }
+
+  logout():void{
+   this._usuario = null;
+   this._accessToken = null;
+   sessionStorage.clear();
+   sessionStorage.removeItem('usuario'); 
+   sessionStorage.removeItem('token'); 
+  }
+
+  hasRole(role:string):boolean{
+    if(this._usuario?.roles.includes(role))
+    {
       return true;
     }
     return false;

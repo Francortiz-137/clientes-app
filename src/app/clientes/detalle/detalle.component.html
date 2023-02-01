@@ -22,7 +22,7 @@
                                         <li class="list-group-item">{{cliente.region.name}}</li>
                                     </ul>
                 
-                                    <div class="mb-3">
+                                    <div class="mb-3" *ngIf="authService.hasRole('ROLE_ADMIN')">
                                         <label for="formFileSm" class="form-label">Subir foto</label>
                                         <input (change)="seleccionarFoto($event)" class="form-control form-control-sm" id="formFileSm" type="file">
                                         <button [disabled]="!fotoSeleccionada" (click)="subirFoto()" class="btn btn-outline-secondary" type="button">Subir foto</button>

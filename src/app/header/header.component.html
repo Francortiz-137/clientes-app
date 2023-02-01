@@ -17,8 +17,17 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-right">
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!authService.isAuthenticated()">
             <a class="nav-link active" aria-current="page" [routerLink]="['/login']">Login</a>
+            <li class="dropdown" *ngIf="authService.isAuthenticated()">
+              <a class="btn btn-outline-primary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true">
+                {{authService.usuario.username}}
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <button (click)="logout()" class="dropdown-item" type="submit">Sign out</button>
+              </div>
+            </li>
         </ul>  
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { Factura } from "../factura/models/factura";
 import { Region } from "./region";
 
 export class Cliente {
@@ -8,4 +9,5 @@ export class Cliente {
     email!: string;
     img!: string;
     region!: Region;
+    facturas!: Factura[];
 }

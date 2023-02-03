@@ -9,5 +9,5 @@ export class Cliente {
     email!: string;
     img!: string;
     region!: Region;
-    facturas!: Factura[];
+    invoices!: Factura[];
 }

@@ -24,6 +24,7 @@ import { AuthGuard } from './usuarios/guards/auth.guard';
 import { RoleGuard } from './usuarios/guards/role.guard';
 import { TokenInterceptor } from './usuarios/interceptors/token.interceptor';
 import { AuthInterceptor } from './usuarios/interceptors/auth.interceptor';
+import { DetalleFacturaComponent } from './factura/detalle-factura.component';
 
 registerLocaleData(localeEs, 'es')
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'clientes/form', component: FormComponent, canActivate:[AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'}},
   {path: 'clientes/form/:id', component: FormComponent, canActivate:[AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'}},
   {path: 'login', component: LoginComponent},
+  {path: 'facturas/:id', component: DetalleFacturaComponent},
 ];
 
 @NgModule({
@@ -48,6 +50,7 @@ const routes: Routes = [
     PaginatorComponent,
     DetalleComponent,
     LoginComponent,
+    DetalleFacturaComponent,
   ],
   imports: [
     BrowserModule,

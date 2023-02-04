@@ -41,17 +41,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div *ngIf="cliente.facturas.length==0" class="alert alert-info my-4">
+                            <div *ngIf="cliente.invoices?.length==0" class="alert alert-info my-4">
                                 No hay factura asignadas para el cliente.
                             </div>
 
-                            <table *ngIf="cliente.facturas.length>0" class="table-bordered table-striped my-4">
+                            <table *ngIf="cliente.invoices?.length>0" class="table-bordered table-striped my-4">
                                 <thead>
                                     <tr>
                                         <th>folio</th>
                                         <th>descripcion</th>
                                         <th>fecha</th>
                                         <th>total</th>
+                                        <th>detalle</th>
+                                        <th>Eliminar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +62,9 @@
                                         <td>{{factura.itemDescription}}</td>
                                         <td>{{factura.createdAt}}</td>
                                         <td>{{factura.total}}</td>
+                                        <td><button class="btn btn-primary btn-sm" type="button"
+                                            [routerLink]="['/facturas', factura.id]">ver</button></td>
+                                        <td><button class="btn btn-danger btn-sm" type="button" (click)="deleteFactura(factura)">eliminar</button></td>
                                     </tr>
                                 </tbody>
                             </table>

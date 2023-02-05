@@ -10,7 +10,7 @@ import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormComponent } from './clientes/form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es-CL';
 import { PaginatorComponent } from './paginator/paginator.component';
@@ -26,6 +26,8 @@ import { TokenInterceptor } from './usuarios/interceptors/token.interceptor';
 import { AuthInterceptor } from './usuarios/interceptors/auth.interceptor';
 import { DetalleFacturaComponent } from './factura/detalle-factura.component';
 import { FacturaComponent } from './factura/factura.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
 
 registerLocaleData(localeEs, 'es')
 
@@ -63,7 +65,10 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule,
   ],
   providers: [ClienteService,{provide: LOCALE_ID, useValue: 'es'},
   {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

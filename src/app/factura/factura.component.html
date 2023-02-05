@@ -16,7 +16,7 @@
         <div class="form-group row">
             <label for="descripcion" class="col-sm-2 col-form-label">Decripcion</label>
             <div class="col-sm-6">
-                <input name="descripcion" [(ngModel)]="factura.itemDescription" type="text" class="form-control">
+                <input name="descripcion" [(ngModel)]="factura.description" type="text" class="form-control">
             </div>
         </div>
 
@@ -75,7 +75,7 @@
 
         <div class="form-group row">
             <div class="col-sm-6">
-                <input type="submit" value="Crear Factura" class="btn btn-secondary" />
+                <input type="submit" (click)="create()" value="Crear Factura" class="btn btn-secondary" />
             </div>
         </div>
     </form>

@@ -68,7 +68,7 @@ export class DetalleComponent implements OnInit{
         container: 'swal2-container'
       },
       title: "Are you sure",
-      text: `Seguro que deseas eliminar la factura ${factura.itemDescription}`,
+      text: `Seguro que deseas eliminar la factura ${factura.description}`,
       icon: "error",
       showCancelButton: true,
       confirmButtonColor: "gray",

@@ -37,9 +37,9 @@
                            matInput
                            [formControl]="autocompleteControl"
                            [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete">
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="mostrarNombre">
                       <mat-option *ngFor="let producto of productosFiltrados | async" [value]="producto">
-                        {{producto}}
+                        {{producto.name}}
                       </mat-option>
                     </mat-autocomplete>
                   </mat-form-field>

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, startWith, map } from 'rxjs';
+import { Observable, startWith, map, filter, flatMap, mergeMap } from 'rxjs';
 import { ClienteService } from '../clientes/cliente.service';
 import { Factura } from './models/factura';
+import { Producto } from './models/producto';
+import { FacturaService } from './services/factura.service';
 
 @Component({
   selector: 'app-factura',
@@ -16,12 +18,12 @@ export class FacturaComponent implements OnInit{
   factura: Factura = new Factura();
 
   autocompleteControl = new FormControl('');
-  productos: string[] = ['Mesa', 'Tablet', 'Sony','Samsung'];
-  productosFiltrados!: Observable<string[]>;
+  productosFiltrados!: Observable<Producto[]>;
 
 
   constructor(private clienteService:ClienteService,
-    private activatedRoute: ActivatedRoute){}
+    private activatedRoute: ActivatedRoute,
+    private facturaService: FacturaService){}
 
   ngOnInit(){
     this.activatedRoute.paramMap.subscribe(params => {
@@ -30,14 +32,20 @@ export class FacturaComponent implements OnInit{
     });
     
     this.productosFiltrados = this.autocompleteControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
+      map( (value:string|Producto|null) => typeof value === 'string'? value: value?.name),
+      mergeMap(value => value ? this._filter(value): []),
     );
   }
 
-  private _filter(value: string): string[] {
+  private _filter(value: string): Observable<Producto[]> {
     const filterValue = value.toLowerCase();
 
-    return this.productos.filter(option => option.toLowerCase().includes(filterValue));
+    return this.facturaService.filtrarProductos(filterValue);
+  }
+
+  protected mostrarNombre(producto?: Producto): string | undefined {
+    return producto? producto.name : undefined
   }
 }
+
+

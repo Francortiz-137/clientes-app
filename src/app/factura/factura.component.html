@@ -59,7 +59,7 @@
                 <tr *ngFor="let item of factura.items">
                     <td>{{item.product.name}}</td>
                     <td>{{item.product.price}}</td>
-                    <td>{{item.amount}}</td>
+                    <td><input type="number" value="{{item.amount}}" class="form-control col-sm-4" (change)="actualizarCantidad(item.product.id, $event)"></td>
                     <td>{{item.calcularImporte()}}</td>
                 </tr>
             </tbody>

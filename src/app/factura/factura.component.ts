@@ -106,7 +106,7 @@ export class FacturaComponent implements OnInit{
   }
 
   eliminarItemFactura(id: number): void {
-    this.factura.items = this.factura.items.filter((item:ItemFactura) => {(item:ItemFactura) => item.product.id!== id});
+    this.factura.items = this.factura.items.filter((item:ItemFactura) =>  item.product.id!== id);
   }
 }
 

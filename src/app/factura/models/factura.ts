@@ -6,7 +6,7 @@ export class Factura {
     id!: number;
     itemDescription!: string;
     observation!: string;
-    items!: ItemFactura[];
+    items: ItemFactura[] = [];
     client!: Cliente;
     total!: number;
     createdAt!: string;

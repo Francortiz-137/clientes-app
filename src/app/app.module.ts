@@ -25,6 +25,7 @@ import { RoleGuard } from './usuarios/guards/role.guard';
 import { TokenInterceptor } from './usuarios/interceptors/token.interceptor';
 import { AuthInterceptor } from './usuarios/interceptors/auth.interceptor';
 import { DetalleFacturaComponent } from './factura/detalle-factura.component';
+import { FacturaComponent } from './factura/factura.component';
 
 registerLocaleData(localeEs, 'es')
 
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'clientes/form/:id', component: FormComponent, canActivate:[AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'}},
   {path: 'login', component: LoginComponent},
   {path: 'facturas/:id', component: DetalleFacturaComponent},
+  {path: 'facturas/form/:clienteId', component: FacturaComponent},
 ];
 
 @NgModule({
@@ -51,6 +53,7 @@ const routes: Routes = [
     DetalleComponent,
     LoginComponent,
     DetalleFacturaComponent,
+    FacturaComponent,
   ],
   imports: [
     BrowserModule,

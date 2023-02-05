@@ -58,11 +58,12 @@ protected regiones: Region[] =[];
 
   update():void{
     console.log(this.cliente);
+    this.cliente.invoices = [];
     this.clienteService.update(this.cliente)
     .subscribe( {
       next: cliente => {
         this.router.navigate(['/clientes'])
-        Swal.fire('Cliente Actualizado', `El cliente: ${cliente.name} ha sido actualizado con exito`, 'success')
+        Swal.fire('Cliente Actualizado', `El cliente: ${this.cliente.name} ha sido actualizado con exito`, 'success')
     }, 
     error: err=>{
       this.errores = err.error.errors as string[];

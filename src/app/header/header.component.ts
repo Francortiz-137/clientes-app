@@ -10,7 +10,7 @@ import { AuthService } from "../usuarios/auth.service";
 export class HeaderComponent {
 
     title: string = "App Angular"
-    constructor(protected authService: AuthService, private router: Router) { }
+    constructor(public authService: AuthService, private router: Router) { }
     
     logout():void {
         Swal.fire('Logout',`Hola ${this.authService.usuario.username} has cerrado sesion con exito`, 'success');

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, startWith, map, filter, flatMap, mergeMap } from 'rxjs';
+import { Observable, map, mergeMap } from 'rxjs';
 import Swal from 'sweetalert2';
 import { ClienteService } from '../clientes/cliente.service';
 import { Factura } from './models/factura';
@@ -13,7 +13,7 @@ import { FacturaService } from './services/factura.service';
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
-  styleUrls: ['./factura.component.css']
+  styleUrls: []
 })
 export class FacturaComponent implements OnInit{
 

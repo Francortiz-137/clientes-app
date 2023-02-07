@@ -10,7 +10,7 @@ import { Region } from './region';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: []
 })
 export class FormComponent implements OnInit{
   

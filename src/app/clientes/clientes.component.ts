@@ -6,17 +6,19 @@ import { ClienteService } from './cliente.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from './detalle/modal.service';
 import { AuthService } from '../usuarios/auth.service';
+import { URL_BACKEND } from '../config/config';
 
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.css']
+  styleUrls: []
 })
 export class ClientesComponent{
   
   clientes!: Cliente[];
   paginador: any;
   clienteSeleccionado!: Cliente;
+  urlBackend: string = URL_BACKEND;
 
   constructor(private clienteService: ClienteService, private activatedRoute : ActivatedRoute, 
     public modalService:ModalService,

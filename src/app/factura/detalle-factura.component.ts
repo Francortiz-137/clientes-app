@@ -6,7 +6,7 @@ import { FacturaService } from './services/factura.service';
 @Component({
   selector: 'app-detalle-factura',
   templateUrl: './detalle-factura.component.html',
-  styleUrls: ['./detalle-factura.component.css']
+  styleUrls: []
 })
 export class DetalleFacturaComponent implements OnInit {
   

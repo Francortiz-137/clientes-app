@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-directiva',
   templateUrl: './directiva.component.html',
-  styleUrls: ['./directiva.component.css']
+  styleUrls: []
 })
 export class DirectivaComponent {
   listaCurso: string[] = ['TypeScript','JavaScript','Python', 'Java SE', 'C#'];
